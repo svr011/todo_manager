@@ -1,0 +1,27 @@
+<script src="https://kit.fontawesome.com/0e582567e5.js" crossorigin="anonymous"></script>
+<section class="TodoSection">
+    <div class="TodoSection-Title">
+        <p class="TodoSectionTitle-Text"><%=section_title%></p>
+        <p class="TodoSectionTitle-Count"><%=todos.completed.count %>/<%=todos.count%></p>
+    </div>
+    <ul>
+        <% todos.each do |todo| %>
+            <li class="TodoItem">
+                <label class="TodoItemContainer">
+                    <% if todo.completed %>
+                        <input type="checkbox" style="width:26px; height:26px;" name="" value="" checked>
+                        <p style="text-decoration : line-through"><%= todo.todo_text%></p>
+                    <% end %>
+                    <% if !todo.completed %>
+                        <input type="checkbox" style="width:26px; height:26px;" name="" value="">
+                        <%= todo.todo_text%>
+                    <% end %>
+                    <% if show_due_date%>
+                       <p class="duedate"><%= todo.due_date.to_s(:short)%></p>
+                    <% end %>
+                    <i style="margin-left :6px;" class="fa fa-trash-o" aria-hidden="true"></i>
+                </label>
+            </li>
+        <% end %>
+    </ul>
+</section>

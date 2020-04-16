@@ -17,8 +17,7 @@ class TodosController < ApplicationController
             due_date:due_date,
             completed:false,
         )
-        response="hey id of new todo is #{new_todo.id}"
-        render plain:response
+        redirect_to todos_path
     end
     def update
         id=params[:id]

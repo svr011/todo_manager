@@ -1,14 +1,26 @@
 <main class="TodomMain">
     <article class="">
       <h1 class="Todo-title">My To-do List</h1>
-      <section class="AddTodo">
-        <input class="AddTodoText" type="text" placeholder="what's next?" name="" value="">
-        <input class="AddTodoText" type="date" name="" value="">
-        <input class="AddTodoButton" type="button" name="" value="Add">
-      </section>
-      <%= render partial:"todo-section",locals:{section_title:"Overdue",todos:Todo.overdue,show_due_date:true}%>
-      <%= render partial:"todo-section",locals:{section_title:"Due Today",todos:Todo.due_today,show_due_date:false}%>
-      <%= render partial:"todo-section",locals:{section_title:"Due Later",todos:Todo.due_later,show_due_date:true}%>
+      <form class="AddTodo" action="/todos" method="POST">
+          <input class="AddTodoText" type="text" placeholder="what's next?" name="todo_text" value="">
+          <input class="AddTodoText" type="date" name="due_date" value="">
+          <input class="AddTodoButton" type="submit" name="" value="Add">
+      </form>
+      <%= render partial:"todo-section",locals:{
+          section_title:"Overdue",
+          todos:Todo.overdue,
+          show_due_date:true}
+      %>
+      <%= render partial:"todo-section",locals:{
+          section_title:"Due Today",
+          todos:Todo.due_today,
+          show_due_date:false}
+      %>
+      <%= render partial:"todo-section",locals:{
+          section_title:"Due Later",
+          todos:Todo.due_later,
+          show_due_date:true}
+      %>
       
     </article>
   </main>

@@ -1,4 +1,3 @@
-<script src="https://kit.fontawesome.com/0e582567e5.js" crossorigin="anonymous"></script>
 <section class="TodoSection">
     <div class="TodoSection-Title">
         <p class="TodoSectionTitle-Text"><%=section_title%></p>
@@ -9,8 +8,12 @@
             <li class="TodoItem">
                 <label class="TodoItemContainer">
                     <%= form_with(url: "/todos/#{todo.id}", method: "PUT") do %>
-                        <input type="checkbox"  class ="checkbox" name= "completed"  <%=todo.completed ? "checked" : ""%> onclick= "this.form.submit()" >
-                        
+                        <input type="checkbox"  
+                            class ="checkbox" 
+                            name= "completed"  
+                            <%=todo.completed ? "checked" : ""%> 
+                            onclick= "this.form.submit()" 
+                        >
                     <% end %>
                     <p class=<%= todo.completed ? "Todo-text-completed" : "" %>>
                          <%= todo.todo_text %>
@@ -18,7 +21,11 @@
                     <% if show_due_date%>
                        <p class="duedate"><%= todo.due_date.to_s(:short)%></p>
                     <% end %>
-                    <i style="margin-left :6px;" class="fa fa-trash-o" aria-hidden="true"></i>
+
+                    <%= form_with(url: "/todos/#{todo.id}", method: "DELETE") do%>
+                        <input type='image' src="delete.svg" class="TodoItem-delete">
+                     <% end %>
+                     
                 </label>
             </li>
         <% end %>

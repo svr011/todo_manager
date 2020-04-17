@@ -98,6 +98,26 @@ body {
   margin-right: 8px;
   line-height: 1.4;
 }
+.TodoItem{
+  margin-left: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.TodoItem:hover {
+  background-color: #F1EDF7;
+}
+.TodoItem:hover .TodoItem-delete{
+  visibility: visible;
+}
+
+.TodoItem-delete{
+  visibility: hidden;
+  margin-left: 10px;
+  height:23px;
+  width 13px;
+
+}
 
 .TodoSectionTitle-Text {
   margin-right: 8px;

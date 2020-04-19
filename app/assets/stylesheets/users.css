@@ -20,8 +20,11 @@
   .Form-submit {
     font-size: 20px;
     padding: 20px;
-    background-color: #24856120;
+    color: wheat;
+    background-color: #48BB78;
     border: 0;
     border-radius: 8px;
-  
+  }
+  .Form-submit:hover{
+    color: white;
   }

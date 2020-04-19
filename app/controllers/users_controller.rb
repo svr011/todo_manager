@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-    #skip_before_action :ensure_user_logged_in
+    skip_before_action :ensure_user_logged_in
 
     def index
       render "users/new"
@@ -10,15 +10,19 @@ class UsersController < ApplicationController
     end
   
     def create
-      User.create!(
+      new_user = User.new(
         first_name: params[:first_name],
         last_name: params[:last_name],
         email: params[:email],
         password: params[:password],
       )
-    end
-  
-    def login
-      render plain: User.where(email: params[:email], password: params[:password]).exists?
+      if new_user.save
+        session[:current_user_id] = new_user.id
+        flash[:notice] = "You've signed-up successfully!"
+        redirect_to "/"
+      else
+        flash[:error] = new_user.errors.full_messages.join(", ")
+        redirect_to new_user_path
+      end
     end
   end

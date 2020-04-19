@@ -1,6 +1,7 @@
 <main class="TodomMain">
     <article class="">
       <h1 class="Todo-title">My To-do List</h1>
+      
       <%= form_with(url: "/todos",method: "post",class: "AddTodo") do %>
           <input class="AddTodoText" type="text" placeholder="what's next?" name="todo_text" value="">
           <input class="AddTodoText" type="date" name="due_date" value="">
@@ -8,17 +9,17 @@
       <% end %>
       <%= render partial:"todo-section",locals:{
           section_title:"Overdue",
-          todos:Todo.overdue,
+          todos:@todos.overdue,
           show_due_date:true}
       %>
       <%= render partial:"todo-section",locals:{
           section_title:"Due Today",
-          todos:Todo.due_today,
+          todos:@todos.due_today,
           show_due_date:false}
       %>
       <%= render partial:"todo-section",locals:{
           section_title:"Due Later",
-          todos:Todo.due_later,
+          todos:@todos.due_later,
           show_due_date:true}
       %>
       
